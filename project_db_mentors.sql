@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS company;
 
 -- Creation of tables
 CREATE TABLE company (
-    company_id INT PRIMARY KEY,
+    company_id INT PRIMARY KEY AUTO_INCREMENT,
     company_name TEXT NOT NULL,
     company_sector TEXT NOT NULL,
     company_size INT NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE company (
 );
 
 CREATE TABLE mentors (
-    mentor_id INT PRIMARY KEY,
+    mentor_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     alumni_type TEXT NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE mentors (
 );
 
 CREATE TABLE mentees (
-    mentee_id INT PRIMARY KEY,
+    mentee_id INT PRIMARY KEY AUTO_INCREMENT,
     major TEXT NOT NULL,
     grad_year INT NOT NULL,
     career_interests TEXT NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE mentees (
 );
 
 CREATE TABLE mentoring_session (
-    session_id INT PRIMARY KEY,
+    session_id INT PRIMARY KEY AUTO_INCREMENT,
     session_date DATE NOT NULL,
     session_time TIME NOT NULL,
     session_duration INT NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE mentees_sessions (
 );
 
 CREATE TABLE career_peer_staff (
-    staff_id INT PRIMARY KEY,
+    staff_id INT PRIMARY KEY AUTO_INCREMENT,
     staff_role TEXT NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE career_peer_staff (
 );
 
 CREATE TABLE onboarding_appt (
-    onboarding_appt_id INT PRIMARY KEY,
+    onboarding_appt_id INT PRIMARY KEY AUTO_INCREMENT,
     date DATE NOT NULL,
     time TIME NOT NULL,
     duration INT NOT NULL,
