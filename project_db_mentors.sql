@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS mentors;
 DROP TABLE IF EXISTS company;
 
 -- Creation of tables
+-- Company
 CREATE TABLE company (
     company_id INT PRIMARY KEY AUTO_INCREMENT,
     company_name TEXT NOT NULL,
@@ -21,6 +22,7 @@ CREATE TABLE company (
     company_logo_url TEXT NOT NULL
 );
 
+-- Mentors
 CREATE TABLE mentors (
     mentor_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(50) NOT NULL,
@@ -37,6 +39,7 @@ CREATE TABLE mentors (
     FOREIGN KEY (company_id) REFERENCES company(company_id)
 );
 
+-- Mentees
 CREATE TABLE mentees (
     mentee_id INT PRIMARY KEY AUTO_INCREMENT,
     major TEXT NOT NULL,
@@ -50,6 +53,7 @@ CREATE TABLE mentees (
     FOREIGN KEY (mentor_id) REFERENCES mentors(mentor_id)
 );
 
+-- Mentoring Session
 CREATE TABLE mentoring_session (
     session_id INT PRIMARY KEY AUTO_INCREMENT,
     session_date DATE NOT NULL,
@@ -60,6 +64,7 @@ CREATE TABLE mentoring_session (
     session_topic TEXT NOT NULL
 );
 
+-- Junction table for Mentors and Mentoring Sessions
 CREATE TABLE mentors_sessions (
     mentor_id INT,
     session_id INT,
@@ -68,6 +73,7 @@ CREATE TABLE mentors_sessions (
     FOREIGN KEY (session_id) REFERENCES mentoring_session(session_id)
 );
 
+-- Junction table for Mentees and Mentoring Sessions
 CREATE TABLE mentees_sessions (
     mentee_id INT,
     session_id INT,
@@ -76,6 +82,7 @@ CREATE TABLE mentees_sessions (
     FOREIGN KEY (session_id) REFERENCES mentoring_session(session_id)
 );
 
+-- Career Peer Staff
 CREATE TABLE career_peer_staff (
     staff_id INT PRIMARY KEY AUTO_INCREMENT,
     staff_role TEXT NOT NULL,
@@ -85,6 +92,7 @@ CREATE TABLE career_peer_staff (
     phone VARCHAR(20) NOT NULL
 );
 
+-- Onboarding Appointment
 CREATE TABLE onboarding_appt (
     onboarding_appt_id INT PRIMARY KEY AUTO_INCREMENT,
     date DATE NOT NULL,
@@ -118,7 +126,7 @@ CREATE TABLE onboarding_appt_mentees (
 );
 
 
--- Create dummy data for the tables
+-- Dummy data for the tables
 -- Company
 INSERT INTO company (company_id, company_name, company_sector, company_size, company_location, company_website, company_phone, company_logo_url)
 VALUES
