@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS onboarding_appt_mentees;
+DROP TABLE IF EXISTS onboarding_appt_mentors;
 DROP TABLE IF EXISTS onboarding_appt;
 DROP TABLE IF EXISTS career_peer_staff;
 DROP TABLE IF EXISTS mentees_sessions;
@@ -93,10 +95,27 @@ CREATE TABLE onboarding_appt (
     reason_for_appt TEXT NOT NULL,
     topics_covered TEXT NOT NULL,
     feedback TEXT NOT NULL,
-    staff_id INT,
+    staff_id INT NOT NULL,
     FOREIGN KEY (staff_id) REFERENCES career_peer_staff(staff_id)
 );
 
+-- Junction table for Onboarding Appointments and Mentors
+CREATE TABLE onboarding_appt_mentors (
+    onboarding_appt_id INT NOT NULL,
+    mentor_id INT NOT NULL,
+    PRIMARY KEY (onboarding_appt_id, mentor_id),
+    FOREIGN KEY (onboarding_appt_id) REFERENCES onboarding_appt(onboarding_appt_id),
+    FOREIGN KEY (mentor_id) REFERENCES mentors(mentor_id)
+);
+
+-- Junction table for Onboarding Appointments and Mentees
+CREATE TABLE onboarding_appt_mentees (
+    onboarding_appt_id INT NOT NULL,
+    mentee_id INT NOT NULL,
+    PRIMARY KEY (onboarding_appt_id, mentee_id),
+    FOREIGN KEY (onboarding_appt_id) REFERENCES onboarding_appt(onboarding_appt_id),
+    FOREIGN KEY (mentee_id) REFERENCES mentees(mentee_id)
+);
 
 
 -- Create dummy data for the tables
@@ -211,3 +230,31 @@ VALUES
 (8, '2022-01-08', '17:00:00', 60, 'Zoom', 'Virtual', 'Interview Prep', 'Behavioral Interview, Technical Interview', 'Great session!', 8),
 (9, '2022-01-09', '18:00:00', 60, 'Zoom', 'Virtual', 'Networking', 'Elevator Pitch, Informational Interview', 'Great session!', 9),
 (10, '2022-01-10', '19:00:00', 60, 'Zoom', 'Virtual', 'Resume Review', 'Resume, Cover Letter, LinkedIn Profile', 'Great session!', 10);
+
+-- Onboarding Appt Mentors
+INSERT INTO onboarding_appt_mentors (onboarding_appt_id, mentor_id)
+VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10);
+
+-- Onboarding Appt Mentees
+INSERT INTO onboarding_appt_mentees (onboarding_appt_id, mentee_id)
+VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10);
