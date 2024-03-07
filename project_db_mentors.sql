@@ -125,6 +125,8 @@ CREATE TABLE onboarding_appt_mentees (
 
 
 -- Dummy data for the tables
+-- Not using real data for privacy reasons
+
 -- Company
 INSERT INTO company (company_id, company_name, company_sector, company_size, company_location, company_website, company_phone)
 VALUES
@@ -156,16 +158,16 @@ VALUES
 -- Mentees
 INSERT INTO mentees (mentee_id, major, grad_year, career_interests, first_name, last_name, email, phone, mentor_id)
 VALUES
-(1, 'Computer Science', 2023, 'Software Engineering', 'Jack', 'Black', 'jackblack@example.com', '123-456-7890', 1),
-(2, 'Computer Science', 2023, 'Product Management', 'Sam', 'Smith', 'samsmith@example.com', '123-456-7890', 2),
-(3, 'Computer Science', 2023, 'Data Science', 'Michael', 'Johnson', 'michael@example.com', '123-456-7890', 3),
-(4, 'Computer Science', 2023, 'Software Engineering', 'Camille', 'Jones', 'camille@example.com', '123-456-7890', 4),
-(5, 'Computer Science', 2023, 'Product Management', 'Keaton', 'Brown', 'keaton@example.com', '123-456-7890', 5),
-(6, 'Computer Science', 2023, 'Data Science', 'Jared', 'Garcia', 'jared@example.com', '123-456-7890', 6),
-(7, 'Computer Science', 2023, 'Software Engineering', 'Eliana', 'Martinez', 'eli@example.com', '123-456-7890', 7),
-(8, 'Computer Science', 2023, 'Product Management', 'Ava', 'Rodriguez', 'ava@example.com', '123-456-7890', 8),
-(9, 'Computer Science', 2023, 'Data Science', 'Ethan', 'Hernandez', 'ethan@example.com', '123-456-7890', 9),
-(10, 'Computer Science', 2023, 'Software Engineering', 'Avery', 'Smith', 'avery@example.com', '123-456-7890', 10);
+(1, 'Computer Science', 2024, 'Software Engineering', 'Jack', 'Black', 'jackblack@example.com', '123-456-7890', 1),
+(2, 'Computer Science', 2025, 'Product Management', 'Sam', 'Smith', 'samsmith@example.com', '123-456-7890', 2),
+(3, 'Computer Science', 2026, 'Data Science', 'Michael', 'Johnson', 'michael@example.com', '123-456-7890', 3),
+(4, 'Computer Science', 2025, 'Software Engineering', 'Camille', 'Jones', 'camille@example.com', '123-456-7890', 4),
+(5, 'Computer Science', 2026, 'Product Management', 'Keaton', 'Brown', 'keaton@example.com', '123-456-7890', 5),
+(6, 'Computer Science', 2024, 'Data Science', 'Jared', 'Garcia', 'jared@example.com', '123-456-7890', 6),
+(7, 'Computer Science', 2026, 'Software Engineering', 'Eliana', 'Martinez', 'eli@example.com', '123-456-7890', 7),
+(8, 'Computer Science', 2025, 'Product Management', 'Ava', 'Rodriguez', 'ava@example.com', '123-456-7890', 8),
+(9, 'Computer Science', 2026, 'Data Science', 'Ethan', 'Hernandez', 'ethan@example.com', '123-456-7890', 9),
+(10, 'Computer Science', 2024, 'Software Engineering', 'Avery', 'Smith', 'avery@example.com', '123-456-7890', 10);
 
 -- Mentoring Session
 INSERT INTO mentoring_session (session_id, session_date, session_time, session_duration, session_location, session_modality, session_topic)
@@ -264,3 +266,20 @@ VALUES
 (8, 8),
 (9, 9),
 (10, 10);
+
+-- Statememts used to test AUTO_INCREMENT and FOREIGN KEY constraints
+
+INSERT INTO company (company_name, company_sector, company_size, company_location, company_website, company_phone, )
+VALUES ('Pepsi Co.', 'Food & Beverage', 40000000, 'Harrison, NY', 'https://www.pepsi.com/', '800-123-4567');
+
+INSERT INTO mentees (major, grad_year, career_interests, first_name, last_name, email, phone, mentor_id)
+VALUES ('Economics' , '2024', 'Information Systems', 'Juan', 'Sanchez', 'jsanc@example.com', '800-123-4567', 1);
+
+INSERT INTO mentors (first_name, last_name, alumni_type, years_of_experience, industry_sector, job_title, industry, email, phone, company_id)
+VALUES ('Jack', 'Doherty', 'Alumni', 5, 'Technology', 'Software Engineer', 'Information Systems', 'jd@example.com', '800-123-4567', 11);
+
+INSERT INTO mentors_sessions (mentor_id, session_id)
+VALUES (11, 1);
+
+INSERT INTO mentees_sessions (mentee_id, session_id)
+VALUES (11, 1);
