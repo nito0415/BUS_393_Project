@@ -19,7 +19,6 @@ CREATE TABLE company (
     company_location TEXT NOT NULL,
     company_website TEXT NOT NULL,
     company_phone VARCHAR(20) NOT NULL,
-    company_logo_url TEXT NOT NULL
 );
 
 -- Mentors
@@ -32,7 +31,6 @@ CREATE TABLE mentors (
     industry_sector TEXT NOT NULL,
     job_title VARCHAR(100) NOT NULL,
     industry VARCHAR(100) NOT NULL,
-    mentor_photo_url TEXT NOT NULL,
     email VARCHAR(100) NOT NULL,
     phone VARCHAR(20) NOT NULL,
     company_id INT,
@@ -128,32 +126,32 @@ CREATE TABLE onboarding_appt_mentees (
 
 -- Dummy data for the tables
 -- Company
-INSERT INTO company (company_id, company_name, company_sector, company_size, company_location, company_website, company_phone, company_logo_url)
+INSERT INTO company (company_id, company_name, company_sector, company_size, company_location, company_website, company_phone)
 VALUES
-(1, 'Google', 'Technology', 100000, 'Mountain View, CA', 'https://www.google.com/', '650-253-0000', 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'),
-(2, 'Facebook', 'Technology', 60000, 'Menlo Park, CA', 'https://www.facebook.com/', '650-543-4800', 'https://www.facebook.com/images/fb_icon_325x325.png'),
-(3, 'Amazon', 'Technology', 1000000, 'Seattle, WA', 'https://www.amazon.com/', '206-266-1000', 'https://www.amazon.com/favicon.ico'),
-(4, 'Microsoft', 'Technology', 150000, 'Redmond, WA', 'https://www.microsoft.com/', '425-882-8080', 'https://www.microsoft.com/favicon.ico'),
-(5, 'Apple', 'Technology', 150000, 'Cupertino, CA', 'https://www.apple.com/', '408-996-1010', 'https://www.apple.com/favicon.ico'),
-(6, 'Tesla', 'Automotive', 48000, 'Palo Alto, CA', 'https://www.tesla.com/', '888-518-3752', 'https://www.tesla.com/favicon.ico'),
-(7, 'Walmart', 'Retail', 2200000, 'Bentonville, AR', 'https://www.walmart.com/', '800-925-6278', 'https://www.walmart.com/favicon.ico'),
-(8, 'Target', 'Retail', 360000, 'Minneapolis, MN', 'https://www.target.com/', '800-440-0680', 'https://www.target.com/favicon.ico'),
-(9, 'Costco', 'Retail', 273000, 'Issaquah, WA', 'https://www.costco.com/', '800-774-2678', 'https://www.costco.com/favicon.ico'),
-(10, 'Starbucks', 'Food & Beverage', 346000, 'Seattle, WA', 'https://www.starbucks.com/', '800-782-7282', 'https://www.starbucks.com/favicon.ico');
+(1, 'Google', 'Technology', 100000, 'Mountain View, CA', 'https://www.google.com/', '650-253-0000'),
+(2, 'Facebook', 'Technology', 60000, 'Menlo Park, CA', 'https://www.facebook.com/', '650-543-4800'),
+(3, 'Amazon', 'Technology', 1000000, 'Seattle, WA', 'https://www.amazon.com/', '206-266-1000'),
+(4, 'Microsoft', 'Technology', 150000, 'Redmond, WA', 'https://www.microsoft.com/', '425-882-8080'),
+(5, 'Apple', 'Technology', 150000, 'Cupertino, CA', 'https://www.apple.com/', '408-996-1010'),
+(6, 'Tesla', 'Automotive', 48000, 'Palo Alto, CA', 'https://www.tesla.com/', '888-518-3752'),
+(7, 'Walmart', 'Retail', 2200000, 'Bentonville, AR', 'https://www.walmart.com/', '800-925-6278'),
+(8, 'Target', 'Retail', 360000, 'Minneapolis, MN', 'https://www.target.com/', '800-440-0680'),
+(9, 'Costco', 'Retail', 273000, 'Issaquah, WA', 'https://www.costco.com/', '800-774-2678'),
+(10, 'Starbucks', 'Food & Beverage', 346000, 'Seattle, WA', 'https://www.starbucks.com/', '800-782-7282');
 
 -- Mentors
-INSERT INTO mentors (mentor_id, first_name, last_name, alumni_type, years_of_experience, industry_sector, job_title, industry, mentor_photo_url, email, phone, company_id)
+INSERT INTO mentors (mentor_id, first_name, last_name, alumni_type, years_of_experience, industry_sector, job_title, industry, email, phone, company_id)
 VALUES
-(1, 'John', 'Doe', 'Alumni', 10, 'Technology', 'Software Engineer', 'Technology', 'https://randomuser.me/api/port', 'johndoe@example.com', '123-456-7890', 1),
-(2, 'Jane', 'Smith', 'Alumni', 15, 'Technology', 'Product Manager', 'Technology', 'https://randomuser.me/api/port', 'janesmith@example.com', '123-456-7890', 2),
-(3, 'Michael', 'Johnson', 'Alumni', 20, 'Technology', 'Data Scientist', 'Technology', 'https://randomuser.me/api/port', 'mikejohn@example.com', '123-456-7890', 3),
-(4, 'Emily', 'Williams', 'Alumni', 5, 'Technology', 'Software Engineer', 'Technology', 'https://randomuser.me/api/port', 'emilywilliams@example.com', '123-456-7890', 4),
-(5, 'David', 'Brown', 'Alumni', 8, 'Technology', 'Product Manager', 'Technology', 'https://randomuser.me/api/port', 'davidbrown@example.com', '123-456-7890', 5),
-(6, 'Olivia', 'Jones', 'Alumni', 12, 'Technology', 'Data Scientist', 'Technology', 'https://randomuser.me/api/port', 'oliviajones@example.com', '123-456-7890', 6),
-(7, 'Daniel', 'Garcia', 'Alumni', 3, 'Technology', 'Software Engineer', 'Technology', 'https://randomuser.me/api/port', 'dangarcia@example.com', '123-456-7890', 7),
-(8, 'Sophia', 'Martinez', 'Alumni', 7, 'Technology', 'Product Manager', 'Technology', 'https://randomuser.me/api/port', 'sophiamartinez@example.com', '123-456-7890', 8),
-(9, 'Matthew', 'Rodriguez', 'Alumni', 9, 'Technology', 'Data Scientist', 'Technology', 'https://randomuser.me/api/port', 'mettrodriguez@example.com', '123-456-7890', 9),
-(10, 'Isabella', 'Hernandez', 'Alumni', 11, 'Technology', 'Software Engineer', 'Technology', 'https://randomuser.me/api/port', 'bellahernandez@example.com', '123-456-7890', 10);
+(1, 'John', 'Doe', 'Alumni', 10, 'Technology', 'Software Engineer', 'Technology', 'johndoe@example.com', '123-456-7890', 1),
+(2, 'Jane', 'Smith', 'Alumni', 15, 'Technology', 'Product Manager', 'Technology', 'janesmith@example.com', '123-456-7890', 2),
+(3, 'Michael', 'Johnson', 'Alumni', 20, 'Technology', 'Data Scientist', 'Technology', 'mikejohn@example.com', '123-456-7890', 3),
+(4, 'Emily', 'Williams', 'Alumni', 5, 'Technology', 'Software Engineer', 'Technology', 'emilywilliams@example.com', '123-456-7890', 4),
+(5, 'David', 'Brown', 'Alumni', 8, 'Technology', 'Product Manager', 'Technology', 'davidbrown@example.com', '123-456-7890', 5),
+(6, 'Olivia', 'Jones', 'Alumni', 12, 'Technology', 'Data Scientist', 'Technology', 'oliviajones@example.com', '123-456-7890', 6),
+(7, 'Daniel', 'Garcia', 'Alumni', 3, 'Technology', 'Software Engineer', 'Technology', 'dangarcia@example.com', '123-456-7890', 7),
+(8, 'Sophia', 'Martinez', 'Alumni', 7, 'Technology', 'Product Manager', 'Technology', 'sophiamartinez@example.com', '123-456-7890', 8),
+(9, 'Matthew', 'Rodriguez', 'Alumni', 9, 'Technology', 'Data Scientist', 'Technology', 'mettrodriguez@example.com', '123-456-7890', 9),
+(10, 'Isabella', 'Hernandez', 'Alumni', 11, 'Technology', 'Software Engineer', 'Technology', 'bellahernandez@example.com', '123-456-7890', 10);
 
 -- Mentees
 INSERT INTO mentees (mentee_id, major, grad_year, career_interests, first_name, last_name, email, phone, mentor_id)

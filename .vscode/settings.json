@@ -9,8 +9,8 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "project",
-            "database": "project",
+            "name": "Local instance 3306",
+            "database": "new_schema",
             "username": "root"
         }
     ]
