@@ -18,7 +18,7 @@ CREATE TABLE company (
     company_size INT NOT NULL,
     company_location TEXT NOT NULL,
     company_website TEXT NOT NULL,
-    company_phone VARCHAR(20) NOT NULL,
+    company_phone VARCHAR(20) NOT NULL
 );
 
 -- Mentors
@@ -269,7 +269,7 @@ VALUES
 
 -- Statememts used to test AUTO_INCREMENT and FOREIGN KEY constraints
 
-INSERT INTO company (company_name, company_sector, company_size, company_location, company_website, company_phone, )
+INSERT INTO company (company_name, company_sector, company_size, company_location, company_website, company_phone)
 VALUES ('Pepsi Co.', 'Food & Beverage', 40000000, 'Harrison, NY', 'https://www.pepsi.com/', '800-123-4567');
 
 INSERT INTO mentees (major, grad_year, career_interests, first_name, last_name, email, phone, mentor_id)
