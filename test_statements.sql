@@ -2,7 +2,7 @@ SELECT * FROM company;
 
 
 
--- View list of mentors and mentees for a all sessions
+-- TODO: Create 3 queries that include grouping
 SELECT 
     'Mentee' AS attendee_type,
     m.first_name,
@@ -78,3 +78,5 @@ INNER JOIN
 
 ORDER BY
     session_id, attendee_type;
+
+-- TODO: Add 2 more queries that implement subqueries
