@@ -333,13 +333,21 @@ INNER JOIN onboarding_appt_mentors om ON m.mentor_id = om.mentor_id
 INNER JOIN onboarding_appt a ON om.onboarding_appt_id = a.onboarding_appt_id
 ORDER BY onboarding_appt_id ASC;
 
+-- View career peers and all their onboarding appointments
+DROP VIEW IF EXISTS onboarding_appt_attendees;
 CREATE VIEW onboarding_appt_attendees AS
-SELECT s.staff_id, s.first_name, s.last_name, s.email, a.onboarding_appt_id, a.date, a.time, a.duration, a.appt_location, a.appt_modality, a.reason_for_appt, a.topics_covered, a.feedback
+SELECT "Career Peer" AS attendee_type, s.first_name, s.last_name, s.email, a.onboarding_appt_id, a.date, a.time, a.duration, a.appt_location, a.appt_modality, a.reason_for_appt, a.topics_covered, a.feedback
 FROM career_peer_staff s
 INNER JOIN onboarding_appt a ON s.staff_id = a.staff_id
 UNION ALL
-SELECT m.mentor_id, m.first_name, m.last_name, m.email, a.onboarding_appt_id, a.date, a.time, a.duration, a.appt_location, a.appt_modality, a.reason_for_appt, a.topics_covered, a.feedback
+SELECT "Mentor" AS attendee_type, m.first_name, m.last_name, m.email, a.onboarding_appt_id, a.date, a.time, a.duration, a.appt_location, a.appt_modality, a.reason_for_appt, a.topics_covered, a.feedback
 FROM mentors m
 INNER JOIN onboarding_appt_mentors om ON m.mentor_id = om.mentor_id
 INNER JOIN onboarding_appt a ON om.onboarding_appt_id = a.onboarding_appt_id
-ORDER BY onboarding_appt_id ASC;
+UNION ALL
+SELECT "Mentee" AS attendee_type, n.first_name, n.last_name, n.email, a.onboarding_appt_id, a.date, a.time, a.duration, a.appt_location, a.appt_modality, a.reason_for_appt, a.topics_covered, a.feedback
+FROM mentees n
+INNER JOIN onboarding_appt_mentees nm ON n.mentee_id = nm.mentee_id
+INNER JOIN onboarding_appt a ON nm.onboarding_appt_id = a.onboarding_appt_id
+ORDER BY onboarding_appt_id;
+
