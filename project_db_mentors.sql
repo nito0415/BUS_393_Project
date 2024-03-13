@@ -302,4 +302,44 @@ INNER JOIN mentors_sessions AS ms ON s.session_id = ms.session_id
 INNER JOIN mentors mt ON ms.mentor_id = mt.mentor_id
 ORDER BY session_id ASC;
 
+
+-- Example statements: DISREGARD
+/* SELECT 'Mentee' AS attendee_type, m.first_name, m.last_name, m.email, m.career_interests, ms.session_id
+FROM mentees_sessions AS ms
+INNER JOIN mentees AS m ON ms.mentee_id = m.mentee_id
+ORDER BY session_id ASC;
+-- WHERE ms.session_id = 1
+-- UNION ALL
+SELECT 'Mentor' AS attendee_type, mt.first_name, mt.last_name, mt.email, mt.industry, ms.session_id
+FROM mentors_sessions AS ms
+INNER JOIN mentors AS mt ON ms.mentor_id = mt.mentor_id
+-- WHERE ms.session_id = 1
+ORDER BY session_id ASC; */
+
 -- TODO: Add 2 more queries that implement subqueries
+
+-- View career peer staff and their onboarding appointments
+CREATE VIEW career_peer_staff_appts AS
+SELECT s.staff_id, s.staff_role, s.first_name, s.last_name, s.email, s.phone, a.onboarding_appt_id, a.date, a.time, a.duration, a.appt_location, a.appt_modality, a.reason_for_appt, a.topics_covered, a.feedback
+FROM career_peer_staff s
+INNER JOIN onboarding_appt a ON s.staff_id = a.staff_id
+ORDER BY onboarding_appt_id ASC;
+
+-- View mentors and their onboarding appointments
+CREATE VIEW mentor_onboarding_appts AS
+SELECT m.mentor_id, m.first_name, m.last_name, m.email, m.phone, a.onboarding_appt_id, a.date, a.time, a.duration, a.appt_location, a.appt_modality, a.reason_for_appt, a.topics_covered, a.feedback
+FROM mentors m
+INNER JOIN onboarding_appt_mentors om ON m.mentor_id = om.mentor_id
+INNER JOIN onboarding_appt a ON om.onboarding_appt_id = a.onboarding_appt_id
+ORDER BY onboarding_appt_id ASC;
+
+CREATE VIEW onboarding_appt_attendees AS
+SELECT s.staff_id, s.first_name, s.last_name, s.email, a.onboarding_appt_id, a.date, a.time, a.duration, a.appt_location, a.appt_modality, a.reason_for_appt, a.topics_covered, a.feedback
+FROM career_peer_staff s
+INNER JOIN onboarding_appt a ON s.staff_id = a.staff_id
+UNION ALL
+SELECT m.mentor_id, m.first_name, m.last_name, m.email, a.onboarding_appt_id, a.date, a.time, a.duration, a.appt_location, a.appt_modality, a.reason_for_appt, a.topics_covered, a.feedback
+FROM mentors m
+INNER JOIN onboarding_appt_mentors om ON m.mentor_id = om.mentor_id
+INNER JOIN onboarding_appt a ON om.onboarding_appt_id = a.onboarding_appt_id
+ORDER BY onboarding_appt_id ASC;
