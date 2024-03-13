@@ -285,8 +285,7 @@ SELECT 'Mentor' AS attendee_type, mt.first_name, mt.last_name, mt.email, mt.indu
 FROM mentors_sessions AS ms
 INNER JOIN mentors AS mt ON ms.mentor_id = mt.mentor_id
 -- WHERE ms.session_id = 1
-ORDER BY session_id
-;
+ORDER BY session_id;
 
 -- View mentoring sessions and their attendees
 CREATE VIEW mentoring_session_attendees AS
@@ -301,6 +300,6 @@ SELECT s.session_id, s.session_date, s.session_time, s.session_duration, s.sessi
 FROM mentoring_session s 
 INNER JOIN mentors_sessions AS ms ON s.session_id = ms.session_id
 INNER JOIN mentors mt ON ms.mentor_id = mt.mentor_id
-ORDER BY session_id, attendee_type;
+ORDER BY session_id;
 
 -- TODO: Add 2 more queries that implement subqueries
