@@ -326,8 +326,6 @@ VALUES
 
 -- Queries
 
--- TODO: Create 3 queries that include grouping
-
 -- View mentor and mentee assignment along with their names, email, and relevant career information
 -- Testing Statement: 
 DROP VIEW IF EXISTS mentee_mentor_info_sessions;

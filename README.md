@@ -9,10 +9,12 @@ TODO:
 
 - [ ] Revise Student Majors to OCOB Majors
 - [ ] Revise Alumni Majors to OCOB Majors
-- [ ] Revise session duration to be more variable
-- [ ] Revise session schedule to be more variable
 - [ ] Revise staff roles to be more variable
+  
 CHANGELOG:
 
 - [x] Added Major and Concentration attributes to mentor
+- [x] Revise session duration to be more variable
+- [x] Revise session schedule to be more variable
+- [x] Removed a redundant attribute from the mentor entity
 - [ ] 
