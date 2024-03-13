@@ -280,7 +280,7 @@ SELECT 'Mentee' AS attendee_type, m.first_name, m.last_name, m.email, m.career_i
 FROM mentees_sessions AS ms
 INNER JOIN mentees AS m ON ms.mentee_id = m.mentee_id
 -- WHERE ms.session_id = 1
-UNION 
+UNION ALL
 SELECT 'Mentor' AS attendee_type, mt.first_name, mt.last_name, mt.email, mt.industry, ms.session_id
 FROM mentors_sessions AS ms
 INNER JOIN mentors AS mt ON ms.mentor_id = mt.mentor_id
