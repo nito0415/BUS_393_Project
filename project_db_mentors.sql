@@ -274,19 +274,22 @@ VALUES
 -- TODO: Create 3 queries that include grouping
 
 -- View mentor and mentee assignment along with their names, email, and relevant career information
-CREATE VIEW mentee_mentor_info_session_1 AS
-SELECT 'Mentee' AS attendee_type, m.first_name, m.last_name, m.email, m.career_interests
+-- Testing Statement: DROP VIEW IF EXISTS mentee_mentor_info_sessions;
+CREATE VIEW mentee_mentor_info_sessions AS
+SELECT 'Mentee' AS attendee_type, m.first_name, m.last_name, m.email, m.career_interests, ms.session_id
 FROM mentees_sessions AS ms
 INNER JOIN mentees AS m ON ms.mentee_id = m.mentee_id
-WHERE ms.session_id = 1
+-- WHERE ms.session_id = 1
 UNION 
-SELECT 'Mentor' AS attendee_type, mt.first_name, mt.last_name, mt.email, mt.industry
+SELECT 'Mentor' AS attendee_type, mt.first_name, mt.last_name, mt.email, mt.industry, ms.session_id
 FROM mentors_sessions AS ms
 INNER JOIN mentors AS mt ON ms.mentor_id = mt.mentor_id
-WHERE ms.session_id = 1;
+-- WHERE ms.session_id = 1
+ORDER BY session_id
+;
 
 -- View mentoring sessions and their attendees
-
+CREATE VIEW mentoring_session_attendees AS
 SELECT s.session_id,s.session_date, s.session_time, s.session_duration, s.session_location, s.session_topic, s.session_modality, 
     'Mentee' AS attendee_type, m.first_name, m.last_name, m.email
 FROM mentoring_session s
