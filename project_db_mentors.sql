@@ -50,7 +50,6 @@ CREATE TABLE mentees (
     concentration VARCHAR(50),
     grad_year INT NOT NULL,
     career_interests TEXT NOT NULL,
-
     email VARCHAR(100) NOT NULL,
     phone VARCHAR(20) NOT NULL,
     mentor_id INT,
@@ -175,33 +174,47 @@ VALUES
 -- Mentors
 INSERT INTO mentors (first_name, last_name, major, concentration, grad_year, years_of_experience, job_title, industry, email, phone, company_id)
 VALUES
-('John', 'Doe','Business Administration', 'Information Systems', 2012, 10, 'Software Engineer', 'Technology', 'johndoe@example.com', '123-456-7890', 1),
-('Christine', 'Taylor', 'Economics', 'Quantitative Analysis', 2014, 11, 'Data Scientist', 'Data Science', 'ctaylor@example.com', '123-456-7890', 2),
-('Michael', 'Johnson', 'Industrial Technology & Packaging', 'Packaging Technology', 2016, 12, 'Packaging Engineer', 'Idustrial Technology', 'mj@example.com', '123-456-7890', 3),
-('Emily', 'Williams', 'Computer Science', 'Software Engineering', 2007, 13, 'Software Engineer', 'Technology', 'ew@example.com', '123-456-7890', 4),
-('David', 'Brown', 'Business Administration', 'Marketing', 2008, 14, 'Product Manager', 'Technology', 'db@example.com', '123-456-7890', 5),
-('Olivia', 'Jones', 'Computer Science', 'Data Science', 2009, 15, 'Data Scientist', 'Data Science', 'oj@example.com', '123-456-7890', 6),
-('Daniel', 'Garcia', 'Computer Science', 'Software Engineering', 2002, 16, 'Software Engineer', 'Technology', 'dg@example.com', '123-456-7890', 7),
-('Sophia', 'Martinez', 'Computer Science', 'Product Management', 2003, 17, 'Product Manager', 'Technology', 'sm@example.com', '123-456-7890', 8),
-('Matthew', 'Rodriguez', 'Computer Science', 'Data Science', 2004, 18, 'Data Scientist', 'Data Science', 'mr@example.com', '123-456-7890', 9),
-('Isabella', 'Hernandez', 'Computer Science', 'Software Engineering', 2003, 19, 'Software Engineer', 'Technology', 'ih@example.com', '123-456-7890', 10);
-
-
+('Emma', 'Johnson', 'Business Administration', 'Accounting', 2012, 10, 'Senior Accountant', 'Finance', 'ejohnson@example.com', '123-456-7890', NULL),
+('Santiago', 'Garcia', 'Economics', 'Quantitative Analysis', 2014, 8, 'Financial Analyst', 'Banking', 'sgarcia@example.com', '123-456-7891', 1),
+('Aiden', 'Smith', 'Industrial Technology & Packaging', 'Industrial Technology', 2016, 7, 'Process Engineer', 'Manufacturing', 'asmith@example.com', '123-456-7892', 2),
+('Mia', 'Wang', 'Business Administration', 'Marketing', 2008, 16, 'Brand Manager', 'Advertising', 'mwang@example.com', '123-456-7893', 3),
+('Jayden', 'Johnson', 'Business Administration', 'Finance', 2007, 17, 'Investment Banker', 'Finance', 'jjohnson@example.com', '123-456-7894', 4),
+('Camila', 'Rodriguez', 'Business Administration', 'Entrepreneurship', 2009, 15, 'Startup Founder', 'Tech Startups', 'crodriguez@example.com', '123-456-7895', 5),
+('Zoe', 'Kim', 'Business Administration', 'Information Systems', 2002, 22, 'Systems Analyst', 'Technology', 'zkim@example.com', '123-456-7896', 6),
+('Elijah', 'Martinez', 'Economics', 'Real Estate Finance', 2004, 20, 'Real Estate Broker', 'Real Estate', 'emartinez@example.com', '123-456-7897', 7),
+('Sophia', 'Chen', 'Industrial Technology & Packaging', 'Packaging Technology', 2003, 21, 'Packaging Designer', 'Design', 'schen@example.com', '123-456-7898', 8),
+('Lucas', 'Brown', 'Business Administration', 'Management & Human Resources', 2005, 19, 'HR Director', 'Corporate', 'lbrown@example.com', '123-456-7899', 9),
+('Isabella', 'Wilson', 'Business Administration', 'Accounting', 2010, 14, 'Auditor', 'Accounting', 'iwilson@example.com', '123-456-7800', 10),
+('Mateo', 'Hernandez', 'Economics', 'Quantitative Analysis', 2011, 13, 'Econometrician', 'Research', 'mhernandez@example.com', '123-456-7801', NULL),
+('Chloe', 'Lee', 'Industrial Technology & Packaging', 'Consumer Packaging', 2013, 11, 'Quality Control Manager', 'Consumer Goods', 'clee@example.com', '123-456-7802', 1),
+('William', 'Jones', 'Business Administration', 'Marketing', 2015, 9, 'Digital Marketing Coordinator', 'E-Commerce', 'wjones@example.com', '123-456-7803', 2),
+('Ava', 'Davis', 'Business Administration', 'Entrepreneurship', 2017, 7, 'Business Development Manager', 'Startup', 'adavis@example.com', '123-456-7804', 3),
+('Ethan', 'Taylor', 'Business Administration', 'Finance', 2018, 6, 'Financial Planner', 'Financial Services', 'etaylor@example.com', '123-456-7805', 4),
+('Isabel', 'Martinez', 'Economics', 'Real Estate Finance', 2006, 18, 'Mortgage Advisor', 'Banking', 'imartinez@example.com', '123-456-7806', 5),
+('Noah', 'Kim', 'Industrial Technology & Packaging', 'Industrial Technology', 2019, 5, 'Operations Manager', 'Logistics', 'nkim@example.com', '123-456-7807', 6);
 
 
 -- Mentees
-INSERT INTO mentees (major, grad_year, career_interests, first_name, last_name, email, phone, mentor_id)
+INSERT INTO mentees (first_name, last_name, major, concentration, grad_year, career_interests, email, phone, mentor_id)
 VALUES
-('Computer Science', 2024, 'Software Engineering', 'Jack', 'Black', 'jackblack@example.com', '123-456-7890', 1),
-('Computer Science', 2025, 'Product Management', 'Sam', 'Smith', 'samsmith@example.com', '123-456-7890', 2),
-('Computer Science', 2026, 'Data Science', 'Michael', 'Johnson', 'michael@example.com', '123-456-7890', 3),
-('Computer Science', 2025, 'Software Engineering', 'Camille', 'Jones', 'camille@example.com', '123-456-7890', 4),
-('Computer Science', 2026, 'Product Management', 'Keaton', 'Brown', 'keaton@example.com', '123-456-7890', 5),
-('Computer Science', 2024, 'Data Science', 'Jared', 'Garcia', 'jared@example.com', '123-456-7890', 6),
-('Computer Science', 2026, 'Software Engineering', 'Eliana', 'Martinez', 'eli@example.com', '123-456-7890', 7),
-('Computer Science', 2025, 'Product Management', 'Ava', 'Rodriguez', 'ava@example.com', '123-456-7890', 8),
-('Computer Science', 2026, 'Data Science', 'Ethan', 'Hernandez', 'ethan@example.com', '123-456-7890', 9),
-('Computer Science', 2024, 'Software Engineering', 'Avery', 'Smith', 'avery@example.com', '123-456-7890', 10);
+('Michael', 'Taylor', 'Business Administration', 'Accounting', 2024, 'Accounting', 'mtaylor@example.com', '123-456-7890', NULL),
+('Ana', 'Rivera', 'Economics', 'Quantitative Analysis', 2025, 'Economic Research', 'arivera@example.com', '123-456-7891', 1),
+('Liam', 'Chen', 'Industrial Technology & Packaging', 'Industrial Technology', 2026, 'Process Improvement', 'lchen@example.com', '123-456-7892', 2),
+('Emma', 'Martinez', 'Business Administration', 'Marketing', 2025, 'Brand Development', 'emartinez@example.com', '123-456-7893', 3),
+('Jacob', 'Rodriguez', 'Business Administration', 'Finance', 2024, 'Investment Banking', 'jrodriguez@example.com', '123-456-7894', 4),
+('Olivia', 'Gomez', 'Business Administration', 'Entrepreneurship', 2026, 'Startup Management', 'ogomez@example.com', '123-456-7895', 5),
+('James', 'Park', 'Business Administration', 'Information Systems', 2025, 'System Analysis', 'jpark@example.com', '123-456-7896', 6),
+('Sofia', 'Lopez', 'Economics', 'Real Estate Finance', 2026, 'Real Estate Investment', 'slopez@example.com', '123-456-7897', 7),
+('Ethan', 'Wong', 'Industrial Technology & Packaging', 'Packaging Technology', 2024, 'Packaging Design', 'ewong@example.com', '123-456-7898', 8),
+('Emily', 'Johnson', 'Business Administration', 'Management & Human Resources', 2025, 'Human Resources Management', 'ejohnson@example.com', '123-456-7899', 9),
+('Daniel', 'Lee', 'Business Administration', 'Accounting', 2024, 'Corporate Accounting', 'dlee@example.com', '123-456-7800', 10),
+('Isabella', 'Smith', 'Economics', 'Quantitative Analysis', 2025, 'Financial Analysis', 'ismith@example.com', '123-456-7801', NULL),
+('Lucas', 'Nguyen', 'Industrial Technology & Packaging', 'Consumer Packaging', 2026, 'Consumer Product Packaging', 'lnguyen@example.com', '123-456-7802', 1),
+('Mia', 'Jones', 'Business Administration', 'Marketing', 2024, 'Digital Marketing', 'mjones@example.com', '123-456-7803', 2),
+('Noah', 'Kim', 'Business Administration', 'Entrepreneurship', 2025, 'Innovation Management', 'nkim@example.com', '123-456-7804', 3),
+('Sophia', 'Garcia', 'Business Administration', 'Finance', 2026, 'Financial Planning', 'sgarcia@example.com', '123-456-7805', 4),
+('Ava', 'Martinez', 'Economics', 'Real Estate Finance', 2024, 'Mortgage Banking', 'amartinez@example.com', '123-456-7806', 5),
+('Elijah', 'Lee', 'Industrial Technology & Packaging', 'Industrial Technology', 2025, 'Manufacturing Operations', 'elee@example.com', '123-456-7807', 6);
 
 /*
 

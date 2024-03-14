@@ -7,8 +7,7 @@ We have chosen to investigate the OCOB Student Services, specifically the OCOB A
 
 TODO: 
 
-- [ ] Revise Student Majors to OCOB Majors
-- [ ] Revise Alumni Majors to OCOB Majors
+
 - [ ] Revise staff roles to be more variable
   
 CHANGELOG:
@@ -17,4 +16,5 @@ CHANGELOG:
 - [x] Revise session duration to be more variable
 - [x] Revise session schedule to be more variable
 - [x] Removed a redundant attribute from the mentor entity
-- [ ] 
+- [x] Revise Student Majors to OCOB Majors
+- [x] Revise Alumni Majors to OCOB Majors
