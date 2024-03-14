@@ -18,3 +18,4 @@ CHANGELOG:
 - [x] Removed a redundant attribute from the mentor entity
 - [x] Revise Student Majors to OCOB Majors
 - [x] Revise Alumni Majors to OCOB Majors
+- [x] Added Accepted attribute to onboarding_session_mentor and Questions attribute to onboarding_session_mentee

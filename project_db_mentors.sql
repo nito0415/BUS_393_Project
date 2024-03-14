@@ -96,6 +96,8 @@ CREATE TABLE mentoring_session (
 CREATE TABLE mentors_sessions (
     mentor_id INT,
     session_id INT,
+    accepted BOOLEAN NOT NULL DEFAULT FALSE,
+    questions_for_mentor TEXT,
     PRIMARY KEY (mentor_id, session_id),
     FOREIGN KEY (mentor_id) REFERENCES mentors(mentor_id),
     FOREIGN KEY (session_id) REFERENCES mentoring_session(session_id)
@@ -126,12 +128,12 @@ CREATE TABLE onboarding_appt (
     date DATE NOT NULL,
     time TIME NOT NULL,
     duration INT NOT NULL,
-    appt_location TEXT NOT NULL,
-    appt_modality TEXT NOT NULL,
-    reason_for_appt TEXT NOT NULL,
+    appt_location VARCHAR(20) NOT NULL,
+    appt_modality VARCHAR(20) NOT NULL,
+    reason_for_appt VARCHAR(20) DEFAULT 'Onboarding',
     topics_covered TEXT NOT NULL,
-    feedback TEXT,
-    staff_id INT NOT NULL,
+    feedback VARCHAR(100),
+    staff_id INT,
     FOREIGN KEY (staff_id) REFERENCES career_peer_staff(staff_id)
 );
 
@@ -139,6 +141,7 @@ CREATE TABLE onboarding_appt (
 CREATE TABLE onboarding_appt_mentors (
     onboarding_appt_id INT NOT NULL,
     mentor_id INT NOT NULL,
+    accepted BOOLEAN NOT NULL DEFAULT FALSE,
     PRIMARY KEY (onboarding_appt_id, mentor_id),
     FOREIGN KEY (onboarding_appt_id) REFERENCES onboarding_appt(onboarding_appt_id),
     FOREIGN KEY (mentor_id) REFERENCES mentors(mentor_id)
@@ -148,6 +151,7 @@ CREATE TABLE onboarding_appt_mentors (
 CREATE TABLE onboarding_appt_mentees (
     onboarding_appt_id INT NOT NULL,
     mentee_id INT NOT NULL,
+    questions_for_mentor TEXT,
     PRIMARY KEY (onboarding_appt_id, mentee_id),
     FOREIGN KEY (onboarding_appt_id) REFERENCES onboarding_appt(onboarding_appt_id),
     FOREIGN KEY (mentee_id) REFERENCES mentees(mentee_id)
@@ -298,44 +302,61 @@ VALUES
 -- Onboarding Appt
 INSERT INTO onboarding_appt (date, time, duration, appt_location, appt_modality, reason_for_appt, topics_covered, feedback, staff_id)
 VALUES
-('2024-03-10', '11:00:00', 15, 'Zoom', 'Virtual', 'Resume Review', 'Resume, Cover Letter, LinkedIn Profile', NULL, 1),
-('2024-03-11', '12:00:00', 30, 'Zoom', 'Virtual', 'Interview Prep', 'Behavioral Interview, Technical Interview', NULL, 2),
-('2024-03-11', '11:30:00', 45, 'Zoom', 'Virtual', 'Networking', 'Elevator Pitch, Informational Interview', NULL, 3),
-('2024-03-11', '12:30:00', 60, '03-113', 'In-Person', 'Resume Review', 'Resume, Cover Letter, LinkedIn Profile', NULL, 4),
-('2024-03-12', '14:15:00', 45, '03-112', 'In-Person', 'Interview Prep', 'Behavioral Interview, Technical Interview', NULL, 5),
-('2024-03-13', '15:45:00', 15, '03-111', 'In-Person', 'Networking', 'Elevator Pitch, Informational Interview', NULL, 6),
-('2024-03-14', '14:30:00', 30, '03-113', 'In-Person', 'Resume Review', 'Resume, Cover Letter, LinkedIn Profile', NULL, 7),
-('2024-03-15', '12:45:00', 15, '03-111', 'In-Person', 'Interview Prep', 'Behavioral Interview, Technical Interview', NULL, 8),
-('2024-03-16', '11:30:00', 30, 'Zoom', 'Virtual', 'Networking', 'Elevator Pitch, Informational Interview', NULL, 9),
+('2024-03-10', '11:00:00', 15, 'Zoom', 'Virtual', 'Training', 'Resume, Cover Letter, LinkedIn Profile', NULL, 1),
+('2024-03-11', '12:00:00', 30, 'Zoom', 'Virtual', 'Onboarding', 'Behavioral Interview, Technical Interview', NULL, 2),
+('2024-03-11', '11:30:00', 45, 'Zoom', 'Virtual', 'Onboarding', 'Elevator Pitch, Informational Interview', NULL, 3),
+('2024-03-11', '12:30:00', 60, '03-113', 'In-Person', 'Onboarding', 'Resume, Cover Letter, LinkedIn Profile', NULL, 4),
+('2024-03-12', '14:15:00', 45, '03-112', 'In-Person', 'Onboarding', 'Behavioral Interview, Technical Interview', NULL, 5),
+('2024-03-13', '15:45:00', 15, '03-111', 'In-Person', 'Training', 'Elevator Pitch, Informational Interview', NULL, 6),
+('2024-03-14', '14:30:00', 30, '03-113', 'In-Person', 'Training', 'Resume, Cover Letter, LinkedIn Profile', NULL, 7),
+('2024-03-15', '12:45:00', 15, '03-111', 'In-Person', 'Onboarding', 'Behavioral Interview, Technical Interview', NULL, 8),
+('2024-03-16', '11:30:00', 30, 'Zoom', 'Virtual', 'Onboarding', 'Elevator Pitch, Informational Interview', NULL, 9),
 ('2024-03-17', '12:00:00', 30, 'Zoom', 'Virtual', 'Resume Review', 'Resume, Cover Letter, LinkedIn Profile', NULL, 10);
 
 -- Onboarding Appt Mentors
-INSERT INTO onboarding_appt_mentors (onboarding_appt_id, mentor_id)
+INSERT INTO onboarding_appt_mentors (onboarding_appt_id, mentor_id, accepted)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
+(1, 1, TRUE),
+(2, 2, TRUE),
+(3, 3, TRUE),
+(4, 4, TRUE),
+(5, 5, TRUE),
+(6, 6, TRUE),
+(7, 7, TRUE),
+(8, 8, TRUE),
+(9, 9, TRUE),
+(10, 10, TRUE),
+(1, 11, TRUE),
+(2, 12, TRUE),
+(3, 13, TRUE),
+(4, 14, TRUE),
+(5, 15, TRUE),
+(6, 16, TRUE),
+(7, 17, TRUE),
+(8, 18, TRUE);
 
 -- Onboarding Appt Mentees
-INSERT INTO onboarding_appt_mentees (onboarding_appt_id, mentee_id)
+INSERT INTO onboarding_appt_mentees (onboarding_appt_id, mentee_id, questions_for_mentor)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
+(1, 1, 'What skills are crucial for advancing in my field?'),
+(2, 2, 'Can you recommend any resources for learning more about our industry trends?'),
+(3, 3, 'How did you choose your specialty within our field?'),
+(4, 4, 'What are common challenges newcomers face, and how can I avoid them?'),
+(5, 5, 'Could you share your experience about work-life balance?'),
+(6, 6, 'What networking opportunities should I not miss?'),
+(7, 7, 'How important is personal branding in our industry?'),
+(8, 8, 'What strategies have you found effective for staying updated with industry news?'),
+(9, 9, 'How can I make the most out of this mentoring relationship?'),
+(10, 10, 'What are the first steps I should take to start my career successfully?'),
+(1, 11, 'How can I improve my resume to reflect my career interests accurately?'),
+(2, 12, 'What steps did you take to land your first job in the industry?'),
+(3, 13, 'Can you suggest any certifications that would be beneficial for my career?'),
+(4, 14, 'What has been your most challenging experience in your career, and how did you overcome it?'),
+(5, 15, 'How do you approach networking within our industry?'),
+(6, 16, 'What are some effective strategies for time management and prioritization?'),
+(7, 17, 'In what ways can I gain practical experience while still in school?'),
+(8, 18, 'What do you wish you had known when you were starting out in your career?');
+
 
 -- Queries
 
